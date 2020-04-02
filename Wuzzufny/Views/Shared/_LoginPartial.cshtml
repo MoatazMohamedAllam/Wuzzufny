@@ -1,0 +1,131 @@
+﻿
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+
+        <ul class="nav navbar-nav navbar-right mt-2">
+            @*<li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>*@
+
+            @if(ViewBag.empProfile != null)
+            {
+                <li class="notifications">
+                    <a href="#">
+                        <i class="fa fa-globe fa-2x"></i>
+                        <span class="badge js-notifications-count hide"></span>
+                    </a>
+                </li>
+            }
+            <li class="dropdown">
+                @if (ViewBag.UserProfile != null)
+                {
+                    @Html.Partial("_UserProfileNavPartial")
+                }
+
+                @if (ViewBag.empProfile != null)
+                {
+                   
+                    @Html.Partial("_EmployeeNavPartial")
+                }
+
+                @if (ViewBag.compProfile != null)
+                {
+                    @Html.Partial("_CompanyNavPartial")
+                }
+                <a href="#" class="px-3 dropdown-toggle" data-toggle="dropdown">
+                    @User.Identity.GetUserName()
+                </a>
+
+
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right mt-2 ml-3">
+        <li>
+            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </li>
+    </ul>
+    <div class="navbar-right register-btn mt-2 ml-3">
+            @Html.ActionLink("Join Now", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="join-now" })
+    </div>
+
+    <ul class="nav  navbar-nav navbar-right ml-3 mt-2">
+        <li class="dropdown" >
+            <a href="#" data-toggle="dropdown"  role="button">
+                <div class="burger-icon"></div>
+                <div class="burger-icon"></div>
+                <div class="burger-icon"></div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right burger-menu">
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-users icon"></span>
+                        <span class="link-text">Career Coaching</span>
+                    </a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-book icon"></span>
+                        <span class="link-text">Career Readings</span>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-phone icon"></span>
+                        <span class="link-text">Help Center</span>
+                    </a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-exclamation-circle icon"></span>
+                        <span class="link-text">About Us</span>
+                    </a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-handshake icon"></span>
+                        <span class="link-text">Become a Partner</span>
+                    </a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#">
+                        <span class="fa fa-envelope icon"></span>
+                        <span class="link-text">Contact Us</span>
+                    </a>
+                </li>
+
+                <li role="separator" class="divider"></li>
+
+                <li class="follow-us">
+                        <span class="follow-us-label">Follow Us:</span>
+                        <a href="#" class="social-btn social-facebook">
+                            <span class="fab fa-facebook-f icn"></span>
+                        </a>
+                        <a href="#" class="social-btn social-twitter">
+                            <span class="fab fa-twitter icn"></span>
+                        </a>
+                        <a href="#" class="social-btn social-youtube">
+                            <span class="fab fa-youtube icn"></span>
+                        </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+   
+
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    </ul>*@
+}

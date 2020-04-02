@@ -1,0 +1,123 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using System.Linq;
+
+
+@model IPagedList<Wuzzufny.Models.Job>
+
+@{
+    ViewBag.Title = "AllJobs";
+}
+
+<div class="search-job">
+    <form class="form-inline searchjob-form">
+        <div class="input-group">
+            <div class="input-group-prepend bg-white p-2">
+                    <i class="fa fa-search fa-2x text-primary"></i>
+            </div>
+            <input type="text" placeholder="Search by Job Title, Keywords, or Location (e.g. Sales in Cairo)" name="searchTerm" />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary" >Find Jobs</button>
+            </div>
+        </div>
+
+       
+    </form>
+</div>
+
+<span class="userId" style="display:none;">@ViewBag.CurrentUser</span>
+
+<div class="job-page">
+    <ul class="job-list">
+        @foreach (var item in Model)
+        {
+            <li class="list-item">
+                <div class="row result-wrap">
+                    <div class="item-details col-md-9 col-sm-8 col-12">
+                        <div class="job-heading">
+                            <a href="#" class="job-text">@item.Title</a>
+                        </div>
+                        <div class="company-meta">
+                            <span class="company-name">@item.Company.CompanyName</span>
+                            <span class="company-location">@item.Location</span>
+                            <span class="company-id" style="display:none;">@item.PublisherID</span>
+                        </div>
+
+                        <div class="job-details">
+                            <span class="salary">@item.Salary</span>
+                            <span class="job-type"> @item.JobType</span>
+                            <span class="job-type"> @item.Vacancies</span>
+                            <span class="job-type"> @item.Language</span>
+                            <span class="job-type"> @item.ExperinceNeeded</span>
+                            <span class="job-id" style="display:none;"> @item.Id</span>
+                        </div>
+
+                    </div>
+                    <div class="company-logo col-md-3 col-sm-4 col-0">
+                        <a href="#" class="img-container">
+                            <img src="@Url.Content("~/Images/Companies/Logos/"+item.Company.CompanyLogo)" width="80" height="80" class="publisher-img" />
+                        </a>
+
+                        @if (((IEnumerable<int>)ViewBag.ApplyedJobs).Contains(item.Id))
+                        {
+                            <button data-job-id="@item.Id" class="btn btn-primary disabled apply-btn js-apply-request">
+                                Applyed
+                            </button>
+                        }
+                        else
+                        {
+                            <button data-job-id="@item.Id" class="btn btn-primary apply-btn js-apply-request">
+                                Apply Now
+                            </button>
+                        }
+
+                    </div>
+                </div>
+
+                @*<div class="apply-btn">
+                    <button class="btn btn-primary">Apply Now</button>
+                </div>*@
+           
+            </li>
+        }
+    </ul>
+    <div class="paging">
+        @Html.PagedListPager(Model,page => Url.Action("AllJobs",new { page}))
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-apply-request").click(function (e) {
+                bootbox.confirm({
+                    message: "Are you sure you want to apply to this job?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        $.ajax({
+                            url: "/api/employees/ApplyForJob?id=" + $(e.target).attr("data-job-id"),
+                            method: "POST",
+                        })
+                        .done(function () {
+                            bootbox.alert("you applyed successfully");
+                            $(e.target).show().addClass("btn-primary disabled").text("Applyed");
+                        })
+                        .fail(function () {
+                            bootbox.alert("error occured!");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    }

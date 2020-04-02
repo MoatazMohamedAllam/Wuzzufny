@@ -1,0 +1,139 @@
+﻿@model Wuzzufny.ViewModels.JobViewModel
+@{
+    ViewBag.Title = "PublishJob";
+}
+
+<div class="publish-job">
+        <div class="row">
+            <div class="col-md-8 publish-form">
+                <h1 class="title">Publish New Job</h1>
+                @using (Html.BeginForm("PublishJob", "Companies", FormMethod.Post, new { @class = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    // @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Title, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Title)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.ExperinceNeeded, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.ExperinceNeeded, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ExperinceNeeded)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.CareerLevel, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.CareerLevel, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CareerLevel)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.Salary, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Salary)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Description, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" , @rows = 4 })
+                                @Html.ValidationMessageFor(m => m.Description)
+                            </div>
+                        
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.JobType, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.JobType, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.JobType)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.Location, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Location)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.Language, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Language)
+                            </div>
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.Vacancies, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextBoxFor(m => m.Vacancies, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Vacancies)
+                            </div>
+                            
+
+                            <div class="form-group ">
+                                @Html.LabelFor(m => m.Requirements, new { @class = "font-weight-bold" })
+                                <span style="color:red;">*</span>
+                                @Html.TextAreaFor(m => m.Requirements, new { @class = "form-control", @rows = 4})
+                                @Html.ValidationMessageFor(m => m.Requirements)
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn save-btn js-publish-btn" value="Publish Job" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="col-md-4">
+                <img src="~/Images/hiring.jpg" alt="" width="600" height="700" />
+            </div>
+        </div>
+   
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $(".publish-form").submit(function (e) {
+                var successOptions = {
+                    autoHideDelay: 20000,
+                    showAnimation: "fadeIn",
+                    hideAnimation: "fadeOut",
+                    hideDuration: 700,
+                    arrowShow: false,
+                    className: "success",
+                };
+                $.notify("successfully published!", successOptions);
+            })
+            //debugger;
+            //var form = $(".publish-form");
+            //form.validate();
+
+            //    $("js-publish-btn").click(function () {
+            //        if (form.valid()) {
+            //            $.notify("Access granted", "success");
+            //        }
+            //    });
+        });
+    </script>
+    }
+
+
+

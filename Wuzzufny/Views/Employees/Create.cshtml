@@ -1,0 +1,162 @@
+﻿@model Wuzzufny.ViewModels.EmployeeProfileViewModel
+@{
+    ViewBag.Title = "Create Profile";
+}
+
+
+
+<div class="create-empform">
+    @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { @class = "create-form", enctype = "multipart/form-data", }))
+    {
+        @Html.AntiForgeryToken()
+
+        // @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <h2 class="title">Create Profile First</h2>
+        <div class="alert alert-danger" id="error-div" style="display:none;">
+            <span class="glyphicon glyphicon-exclamation-sign" id="view-error" aria-hidden="true">
+
+            </span>
+        </div>
+
+
+        <div class="userphoto">
+            <div class="userphoto-img">
+                @if (Model.ProfileImage != null)
+                {
+                    <img class="profile-img" src="@Url.Content("~/images/Employees/"+Model.ProfileImage)" alt="" />
+                }
+                else
+                {
+                    <span class="profile-img bg-secondary pt-3  text-light h2 text-uppercase" id="imagePosition">
+                        @User.Identity.Name[0]
+                    </span>
+                    <img class="profile-img" src="@Url.Content("~/images/Employees/"+Model.ProfileImage)" alt="" id="imagePreview"/>
+
+                }
+            </div>
+
+            <div class="userphoto-content">
+                <div class="heading">
+                    <h5>Profile Photo<span style="color:red; font-size:20px;">*</span></h5>
+                </div>
+                <span class="text-muted">You can upload a .jpg, .png, or .gif photo with max size of 5MB.</span>
+                <div class="userphoto-links">
+                    <input type="file" accept=".jpg, .jpge, .png, .gif" name="upload" id="uploadImg" onchange="ShowImagePreview(this, document.getElementById('imagePreview'),document.getElementById('imagePosition'))" hidden />
+                    @Html.ValidationMessageFor(m => m.ProfileImage, "you should upload profile picture!", new { @class = "validation-error" })
+                    <label class="btn changephoto-btn" for="uploadImg">Change Photo</label>
+                    <a href="#">Edit Preview</a>
+                    <a href="#">Delete</a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group first-name">
+            @Html.LabelFor(m => m.FirstName, new { @class = "font-weight-bold" })
+            <span style="color:red;">*</span>
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control firstname-txt" })
+            @Html.ValidationMessageFor(m => m.FirstName, "First name field is required")
+        </div>
+
+        <div class="form-group last-name">
+            @Html.LabelFor(m => m.LastName, new { @class = "font-weight-bold" })
+            <span style="color:red;">*</span>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control last" })
+            @Html.ValidationMessageFor(m => m.LastName, "Last name field is required")
+        </div>
+
+        <div class="form-group date-drop">
+            @Html.LabelFor(m => m.birthDate, new { @class = "birthdate-label font-weight-bold" })
+            @Html.DropDownListFor(m => m.Day, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day..", new { @class = "date-form" })
+            @Html.DropDownListFor(m => m.Month, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month..", new { @class = "date-form" })
+            @Html.DropDownListFor(m => m.Year, Enumerable.Range(1900, 118).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year..", new { @class = "date-form" })
+            @Html.ValidationMessageFor(m => m.birthDate, "Birth date field is required", new { @class = "validation-error" })
+        </div>
+
+        <div class="form-group gender-radio">
+            @Html.LabelFor(m => m.Gender, new { @class = "gender-label font-weight-bold" })
+            Male
+            @Html.RadioButtonFor(m => m.Gender, "Male")
+            Female
+            @Html.RadioButtonFor(m => m.Gender, "Female")
+        </div>
+
+        <div class="form-group military-drop">
+            @Html.LabelFor(m => m.MilitaryStatus, new { @class = "font-weight-bold" })
+            @*@Html.DropDownList("MilitaryStatus", null, "-Select-", new { @class = "form-control" })*@
+            @Html.DropDownListFor(m => m.MilitaryStatus, Model.Militaries, "-Select-", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MaritalStatus, new { @class = "marital-label font-weight-bold" })
+            Unspecified
+            @Html.RadioButtonFor(m => m.MaritalStatus, "Unspecified")
+            Single
+            @Html.RadioButtonFor(m => m.MaritalStatus, "Single")
+            Married
+            @Html.RadioButtonFor(m => m.MaritalStatus, "Married")
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn save-btn" value="Join Wuzzufny" id="save" />
+        </div>
+
+    }
+
+</div>
+
+@*<div class="right-div-img">
+        <img src="~/Images/person.jpg" width="100" height="100"/>
+    </div>*@
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        $("#save").click(function () {
+            //if ($("#uploadImg").val() == "") {
+            //    $("#error-div").fadeIn();
+            //    $("#view-error").empty();
+            //    $("#view-error").append("profile image is required");
+            //    return false;
+            //}
+
+            if ($("#uploadImg").val() != "") {
+                $("#error-div").hide();
+
+                //check if the extension of img
+                var fileName = document.getElementById('uploadImg').value;
+
+                var extensionImg = fileName.substr(fileName.lastIndexOf('.') + 1);
+                var validExtension = ['jpg', 'png', 'gif'];
+                if ($.inArray(extensionImg, validExtension) == -1) {
+                    $("#error-div").fadeIn();
+                    $("#view-error").empty();
+                    $("#view-error").append("You should upload a .jpg, .png, or .gif photo ");
+                    return false;
+                }
+
+                //check if the size less than 5MB
+                var myFileSize = document.getElementById('uploadImg').files[0].size / 1024 / 1024;
+                if (myFileSize > 2) {
+                    $("#error-div").fadeIn();
+                    $("#view-error").empty();
+                    $("#view-error").append("You should upload a photo with max size of 2MB ");
+                    return false;
+                }
+            }
+        });
+    });
+
+</script>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row" style="position:relative">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="apply-success hide" style="position: absolute;width: 30%;height: 29%;right: 0px;bottom: 0px;">
+        <span style="background-color:lightgreen;border:1px solid #888;font-size:30px;">You Applied Successfully!</span>
+    </div>
+
+</div>
+
+@*<ul class="job-list hide">
+    
+</ul>*@
+
+
+
+
+
+    <div class="result-wrp hide">
+        <div class="item-details">
+            <a href="#" class="job-text">text of job</a>
+            <div class="new-time">
+                <h2 class="job-title"></h2>
+            </div>
+
+            <div class="company-meta">
+                <span class="company-name"></span>
+                <span class="company-location"></span>
+            </div>
+
+            <div class="job-details">
+                <span class="salary"></span>
+            </div>
+
+            <div class="some-data-for-js">
+                <span class="jobId"></span>
+                <span class="employeeId"></span>
+                <span class="companyId"></span>
+            </div>
+        </div>
+        <div class="company-logo">
+            <img src="" class="comp-img" />
+        </div>
+
+        <button class="js-apply-request btn btn-primary">Apply Now</button>
+
+    </div>
+
+
+
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            var jobs = $.getJSON("/api/employees");
+
+
+
+            $.getJSON("/api/employees", function (jobs) {
+                $.each(jobs, function (index,val) {
+                    $(".result-wrp").removeClass("hide");
+                    $(".job-title").text(val.Title);
+                    $(".company-name").text(val.Company.CompanyName);
+                    $(".job-details .salary").text(val.Salary);
+                    $(".some-data-for-js .jobId").text(val.Id);
+                    //$(".some-data-for-js .employeeId").text(val.);
+                    $(".some-data-for-js .companyId").text(val.PublisherID);
+                });
+            });
+
+
+            //$(".js-apply-request").click(function () {
+
+            //    var jobRequest = new Object();
+            //    jobRequest.
+
+            //    if (confirm("Are you sure you want to apply to this job?")) {
+            //        $.ajax({
+            //            url: "/api/employees/ApplyForJob",
+
+
+
+            //        });
+
+            //    }
+            //});
+
+
+            //$.getJSON("/api/employees", function (jobs) {
+            //    $.each(jobs, function (index, val) {
+            //        $(".job-list").append("<h1>" + val.Salary + "</h1>");
+            //        $(".job-list").append("<li>" + val.JobType + "</li>").removeClass("hide");
+            //    });
+            //});
+
+           
+        });
+
+    </script>    
+
+}

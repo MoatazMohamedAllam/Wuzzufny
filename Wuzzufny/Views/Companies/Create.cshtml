@@ -1,0 +1,123 @@
+﻿@model Wuzzufny.ViewModels.CompanyProfileViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create  Profile First.</h2>
+
+
+@using (Html.BeginForm("Create", "Companies", FormMethod.Post, new { @class = "company-createform", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="userphoto">
+        <div class="userphoto-img">
+            @if (Model.CompanyLogo != null)
+            {
+
+                <img class="profile-img" src="@Url.Content("~/Images/Companies/Logos"+Model.CompanyLogo)" alt=""  />
+            }
+            else
+            {
+                <span class="profile-img bg-secondary pt-3  text-light h2 text-uppercase" id="imagePosition">
+                    @User.Identity.Name[0]
+                </span>
+                <img class="profile-img" src="@Url.Content("~/Images/Companies/Logos"+Model.CompanyLogo)" alt="" id="imagePreview" />
+
+            }
+        </div>
+
+        <div class="userphoto-content">
+            <div class="heading">
+                <h5>Company Logo<span style="color:red; font-size:20px;">*</span></h5>
+            </div>
+            <span class="text-muted">You can upload a .jpg, .png, or .gif photo with max size of 5MB.</span>
+            <div class="userphoto-links">
+                <input type="file" accept=".jpg, .jpge, .png, .gif" name="logoUpload" id="uploadImg" onchange="ShowImagePreview(this, document.getElementById('imagePreview'),document.getElementById('imagePosition'))" hidden/>
+                @Html.ValidationMessageFor(m => m.CompanyLogo, "you should upload company logo!")
+                <label class="btn changephoto-btn" for="uploadImg">Change Photo</label>
+                <a href="#">Edit Preview</a>
+                <a href="#">Delete</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "font-weight-bold" })
+        <span style="color:red;">*</span>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName, "First name field is required")
+    </div>
+
+    <div class="form-group ">
+        @Html.LabelFor(m => m.LastName, new { @class = "font-weight-bold" })
+        <span style="color:red;">*</span>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName, "last name field is required")
+    </div>
+
+    <div class="form-group ">
+        @Html.LabelFor(m => m.Title, new { @class = "font-weight-bold" })
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control " })
+    </div>
+
+    <div class="form-group ">
+        @Html.LabelFor(m => m.MobileNo, new { @class = "font-weight-bold" })
+        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group ">
+        @Html.LabelFor(m => m.JobRule, new { @class = "font-weight-bold" })
+        <span style="color:red;">*</span>
+        @Html.TextBoxFor(m => m.JobRule, new { @class = "form-control " })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CompanyName, new { @class = "font-weight-bold" })
+        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control " })
+    </div>
+
+
+
+    <div class="form-group ">
+        @Html.LabelFor(m => m.PhoneNo, new { @class = "font-weight-bold" })
+        <span style="color:red;">*</span>
+        @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.HearAboutUs, new { @class = "font-weight-bold" })
+        @Html.DropDownListFor(c => c.HearAboutUs, Model.AboutUsHearing, "-Select-", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CompanySize, new { @class = "font-weight-bold" })
+        @Html.DropDownListFor(c => c.CompanySize, Model.CompanySizes, "-Select-", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Country, new { @class = "font-weight-bold" })
+        @Html.DropDownListFor(c => c.Country, new SelectList(ViewBag.CountryList), "-Select-", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.CompanyIndustry, new { @class = "font-weight-bold" })
+        @Html.DropDownListFor(c => c.CompanyIndustry, Model.CompanyIndustries, "-Select-", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn save-btn" value="Join Wuzzufny" />
+    </div>
+
+
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+ }
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Wuzzufny.Models.JobRequest>
+@{
+    ViewBag.Title = "AllRequests";
+    
+}
+
+<div class="allRequests">
+    @if (Model.Count() == 0)
+    {
+        <div class="container mt-5">
+            <div class="alert alert-info">there is no requests for job.</div>
+        </div>
+    }
+
+    <div class="container">
+        <br />
+        <div class="requests-count">
+            There Are <strong>@Model.Count()</strong> Requests.
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="card m-3" style="width: 18rem; float:left;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Employee.FirstName @item.Employee.LastName</h5>
+                    <p class="card-text">apply for <strong>@item.Job.Title</strong> job</p>
+                    @Html.ActionLink("View Profile", "GetEmployeeProfile", "Companies", new { id = item.EmployeeId, requestID = item.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+
+            @*<span style="display:block;margin:10px;">
+                @item.Employee.FirstName @item.Employee.LastName
+                apply for @item.Job.Title job
+                @*<a  href="/Employees/Getprofile/@item.EmployeeId" class="btn btn-primary">View Profile</a>*@
+            // @Html.ActionLink("View Profile", "GetEmployeeProfile", "Companies", new {id = item.EmployeeId , requestID=item.Id},new { @class="btn btn-primary"})
+            //</span>*@
+        }
+
+    </div>
+</div>

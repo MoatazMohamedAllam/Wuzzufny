@@ -1,0 +1,232 @@
+﻿
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+        <header>
+            <nav class="navbar navbar-expand-md fixed-top bg-white">
+                <a href="/home/index" class="mt-2">
+                    <img src="~/Images/log3.png" style="max-width: 120px;max-height:30px;" />
+                </a>
+
+
+
+                <button type="button" class="navbar-toggler bg-light text-dark" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                @if (ViewBag.compProfile != null)
+                {
+                    <div class="collapse navbar-collapse justify-content-between" id="myNavbar">
+                        <ul class="navbar-nav mt-2">
+                            <li class="nav-item ml-5 ">
+                                <a href="/Companies/AllRequests" class="btn btn-primary">
+                                    Job Requests
+                                </a>
+                            </li>
+                            <li class="nav-item ml-2">
+                                <a href="/Companies/PublishJob" class="btn btn-success">
+                                    Publish Job
+                                </a>
+                            </li>
+                        </ul>
+
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                }
+                else
+                {
+
+                    <div class="collapse navbar-collapse justify-content-between" id="myNavbar">
+                        <ul class="navbar-nav mt-2">
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="px-3 dropdown-toggle" data-toggle="dropdown">
+                                    Browse Jobs
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-primary" href="#">Jobs in Giza</a>
+                                    <a class="dropdown-item text-primary" href="#">Information Technology Jobs</a>
+                                    <a class="dropdown-item text-primary" href="#">Banking Jobs</a>
+                                    <a class="dropdown-item text-primary" href="#">Engineering Jobs</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="search-form ml-2 mt-2">
+                            <form class="form-inline ml-1">
+                                <div class="input-group">
+                                    <input type="text" placeholder="search jobs,companies.." class="form-control" />
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-dark">
+                                            <i class="fa fa-search text-light"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        @Html.Partial("_LoginPartial")
+
+
+
+                    </div>
+                }
+
+            </nav>
+        </header>
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a href="#" class="navbar-brand text-uppercase text-info" >
+                        Wuzzafny
+                    </a>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div class="body-content">
+        @RenderBody()
+        <!--Footer-->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="py-3 ">
+                            <a href="#"><i class="fa fa-facebook fa-2x px-2"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-2x px-2"></i></a>
+                            <a href="#"><i class="fa fa-google fa-2x px-2"></i></a>
+                            <a href="#"><i class="fa fa-linkedin fa-2x px-2"></i></a>
+                            <a href="#"><i class="fa fa-youtube fa-2x px-2"></i></a>
+                        </div>
+
+                        <div id="div_top_hypers">
+                            <ul id="ul_top_hypers">
+                                <li><a href="https://wuzzuf.net/about-us">About us</a></li>
+                                <li><a href="https://wuzzuf.net/recruitment/egypt">Recruitment Services</a></li>
+                                <li><a href="https://wuzzuf.net/feeds/all-jobs.xml">RSS</a></li>
+                                <li><a href="https://wuzzuf.net/partners">Partners</a></li>
+                                <li><a href="https://wuzzuf.net/sitemap-updates">Sitemap</a></li>
+                                <li><a href="https://wuzzuf.net/contact-us">Contact Us</a></li>
+                                <li><a href="https://wuzzuf.net/policies">Privacy, Cookies, Terms &amp; Conditions</a></li>
+                                <li><a href="http://forasna.com/jobs/egypt" target="_blank">وظائف مصر</a></li>
+                                <li>
+                                    <a href="https://wuzzuf.net/a/jobs-in-Saudi%20Arabia" rel="noopener">
+                                        Jobs in KSA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wuzzuf.net/a/jobs-in-United%20Arab%20Emirates" rel="noopener">
+                                        Jobs in UAE
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <p class="py-2 ">&copy; 2019 WUZZUFNY. All Rights Reserved. Owned by <a href="#" class="font-weight-bold divComp">AllamDEV</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script src="~/Scripts/scripts.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/template" id="notifications-template">
+        <ul class="notifications">
+            <%
+            _.each(notifications , function(notification){
+            if(notification.RequestStatus == "pending") { %>
+            <li>
+                Your request for <strong><%= notification.Job.Title %></strong> job to
+                <strong><%= notification.Company.CompanyName %></strong> company in <span class="text-info">pending state</span>.
+            </li>
+            <% }
+            else if(notification.RequestStatus == "rejected"){ %>
+            <li>
+                Your request for <strong><%= notification.Job.Title %></strong> job to
+                <strong><%= notification.Company.CompanyName %> </strong>company have been <span class="text-danger">rejected</span>.
+            </li>
+            <% }
+            else{ %>
+            <li>
+                Your request for <strong><%= notification.Job.Title %></strong> job to
+                <strong><%= notification.Company.CompanyName %></strong> company have been <span class="text-success">accepted</span>.
+            </li>
+            <% }
+            })
+            %>
+        </ul>
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $.get("/api/Employees/GetRequestsStatus", function (data) {
+                if (data.length == 0)
+                    return;
+
+                $(".js-notifications-count")
+                        .text(data.length)
+                        .removeClass("hide")
+                        .addClass("animated bounceInDown");
+
+                $(".notifications").popover({
+                    html: true,
+                    title: "Notifications",
+                    placement: 'bottom',
+                    content: function () {
+                        var compiled = _.template($("#notifications-template").html())
+                        return compiled({ notifications: data });
+                    }
+                }).on("shown.bs.popover", function () {
+                    $(".js-notifications-count")
+                            .text("")
+                            .addClass("hide");
+                }).on("click", function (e) {
+                    e.preventDefault();
+                    return true;
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>

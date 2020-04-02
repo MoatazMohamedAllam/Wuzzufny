@@ -1,0 +1,110 @@
+﻿<ul class="dropdown-menu dropdown-menu-right profile-menu">
+    <li class="dropdown-item">
+        <div class="profile-section">
+            <a href="/Companies/Update/@ViewBag.compProfile.Id" class="img-link">
+                <img src="@Url.Content("~/Images/Companies/Logos/"+ViewBag.compProfile.CompanyLogo)" class="rounded-circle profile-img" />
+            </a>
+            <a href="/Companies/Update/@ViewBag.compProfile.Id">
+                <ul class="list-unstyled info-list">
+                    <li class="info-item-heading">Hi<span style="font-size:15px; color:#3681f8;">,</span> @ViewBag.compProfile.FirstName</li>
+                    <li class="info-item-mail text-muted">@ViewBag.compProfile.User.Email</li>
+                    <li class="info-item-label">view profile</li>
+                </ul>
+            </a>
+        </div>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+
+        <a href="/Companies/Update/@ViewBag.compProfile.Id">
+            <span class="fa fa-edit font-icon"></span>
+            <span class="link-text">Edit Profile</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="/Companies/PublishJob">
+            <span class="fa fa-plus-circle font-icon"></span>
+            <span class="link-text">Publish New Job</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="/Companies/AllRequests">
+            <span class="fa fa-users font-icon"></span>
+            <span class="link-text">job Requests</span>
+        </a>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-users font-icon"></span>
+            <span class="link-text">Career Coaching</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-book font-icon"></span>
+            <span class="link-text">Career Readings</span>
+        </a>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-phone font-icon"></span>
+            <span class="link-text">Help Center</span>
+        </a>
+    </li>
+   
+   
+   
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-cogs font-icon"></span>
+            <span class="link-text">Acount Settings</span>
+        </a>
+    </li>
+
+    <li class="dropdown-item">
+        <a href="javascript:document.getElementById('logoutForm').submit()">
+            <span class="fa fa-sign-out font-icon"></span>
+            <span class="link-text">Log Off</span>
+        </a>
+    </li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--*****************************************-->
+
+
+
+
+
+
+
+
+
+

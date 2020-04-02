@@ -1,0 +1,611 @@
+﻿body {
+
+}
+
+/*bootstrap overrides*/
+.field-validation-error{
+    color:red;
+}
+.input-validation-error{
+    border:2px solid red;
+}
+/*end of bootstrap overrides*/
+
+
+.notifications{
+    position:relative;
+}
+.notifications .badge{
+    position:absolute;
+    top:0;
+    left:15px;
+    background:#a80a0a;
+    border-radius:50%;
+    color:#fff;
+}
+
+/*header*/
+header{
+    color:#000;
+    height:60px;
+}
+header nav{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+header a{
+    color:#000;
+}
+header a:hover{
+    text-decoration:none;
+    color:#0055D9;
+}
+header .search-form{
+    width:250px;
+    margin-right:auto;
+}
+header .search-form input{
+    
+    background: #fafafb;
+    border-radius: 2px;
+    border: 1px solid #d9dde4;
+}
+header .search-form input:focus{
+    box-shadow:none;
+    border-color:#d9dde4;
+    background: #fafafb;
+}
+header .register-btn{
+    display:inline-flex;
+}
+header .register-btn .join-now{
+    background-color:#0055D9;
+    height:32px;
+    font-size:14px;
+    border:none;
+    color:#fff;
+    padding:5px 12px;
+    line-height:22px;
+}
+ul li .burger-icon{
+    width: 19px;
+     height: 3px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+ul li .burger-menu{
+    background-color:rgba(0,0,0,.8);
+    min-width:260px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color:#fff;
+}
+header .dropdown-item:hover, .dropdown-item:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+ul li .burger-menu .dropdown-item a{
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    font-size:14px;
+    letter-spacing:-.44px;
+}
+
+ul li .burger-menu .dropdown-item a .icon{
+    display:inline-block;
+    width:22px;
+}
+
+ul li .burger-menu .dropdown-item a .link-text
+{
+    padding-left:10px;
+}
+
+ul li .burger-menu .dropdown-item a .link-text:hover{
+    text-decoration:underline;
+}
+
+ul li .burger-menu .divider{
+    opacity:.4;
+    margin:4px 0;
+    height:2px;
+    background-color:#ebedf0;
+}
+ul li .burger-menu .follow-us{
+    padding:16px 24px;
+    height:56px;
+}
+ul li .burger-menu .follow-us .social-btn{
+    display:inline-block;
+    margin-left:2px;
+    padding:0 6px;
+    text-align:center;
+    font-size:14px;
+    border-radius:4px;
+    min-width:24px;
+    transition:all .2s;
+    color:#fff;
+}
+ul li .burger-menu .follow-us .social-btn:hover{
+    transform:translateY(1px);
+}
+
+ul li .burger-menu .follow-us .social-facebook{
+    background-color:#2F609C;
+}
+ul li .burger-menu .follow-us .social-twitter{
+    background-color:#55ACEE;
+}
+ul li .burger-menu .follow-us .social-youtube{
+    background-color:red;
+}
+ul li .burger-menu .follow-us .follow-us-label{
+    margin-left:2px;
+}
+ header ul li .profile-menu{
+     width:250px;
+}
+header ul li .profile-menu .dropdown-item{
+      padding-left:20px;
+      padding-top:5px;
+  }
+header ul li .profile-menu .dropdown-item:hover{
+    background-color:#bad0f6;
+}
+header ul li .profile-menu .dropdown-item .font-icon{
+    margin-right:10px;
+}
+header ul li .profile-section{
+    height:auto;
+    width:auto;
+}
+header ul li .profile-section a:hover{
+    color:#000;
+}
+header ul li .profile-section .img-link .profile-img{
+    height:68px;
+    width:68px;
+    float:left;
+    margin-top:2px;
+    margin-right:10px;    
+}
+header ul li .profile-section .info-list{
+    margin-left:40px;
+    padding-top:3px;
+}
+header ul li .profile-section .info-list .info-item-heading{
+    font-size:15px;
+    padding-top:3px;
+    font-weight:bold;
+}
+header ul li .profile-section .info-list .info-item-mail{
+    font-size:10px;
+}
+header ul li .profile-section .info-list .info-item-label{
+    padding-top:7px;
+    font-size:14px;
+    color:#2F609C;
+}
+
+ul.notifications{
+    list-style:none;
+    padding-left:0
+}
+ul.notifications>li{
+    border-bottom:1px solid #ddd;
+    padding:10px 0;
+}
+ul.notifications>li:last-child{
+    border-bottom:none;
+}
+/*end of header*/
+
+/*login page*/
+.login-page{
+    background:#E9FAFF;
+    height:450px;
+    position:relative;
+}
+.login-page .login-box{
+    
+    width:500px;
+    background:#fff;
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    border-radius:10px;
+    padding-top:20px;
+    padding-left:15px;
+    padding-bottom:50px;
+    position:absolute;
+    top:10%;
+    left:30%;
+}
+.login-page .login-box h1{
+    margin:auto;
+    padding-bottom:5px;
+    border-bottom:5px solid #F1AF2E;
+    width:100px;
+}
+.login-page .login-box .textbox{
+    width:300px;
+    margin:auto;
+}
+.login-page .login-box .textbox input{
+    width:280px;
+    
+}
+.login-page .login-box .remember-me{
+    width:300px;
+    margin-left:10px;
+    margin:auto;
+}
+.login-page .login-box .remember-me .checkbox{
+    padding:15px;
+}
+.login-page .login-box .submit-div{
+    width:300px;
+    margin:auto;
+    padding-left:15px;
+}
+.login-page .login-box .submit-div .login-btn{
+    width:100px;
+    padding:5px;
+    border:2px solid #F1AF2E;
+    background-color:transparent;
+    transition-duration:0.4s;
+    border-radius:5px;
+}
+.login-page .login-box .submit-div .login-btn:hover{
+    background-color:#F1AF2E;
+    cursor:pointer;
+    color:#fff;
+}
+
+/*end of login page*/
+
+
+/*register page*/
+.register-banner img{
+    margin-top:70px;
+}
+.register-form .heading{
+    border-bottom:3px solid #F1AF2E;
+    padding:5px;
+    width:160px;
+    margin-left:15px;
+}
+.register-form .register-btn{
+    border:2px solid #F1AF2E;
+    width:400px;
+    padding:8px;
+    border-radius:5px;
+    background-color:#F1AF2E;
+    color:#fff;
+    transition-duration:0.4s;
+}
+.register-form .register-btn:hover{
+    background-color:#c48f25;
+    cursor:pointer;
+}
+.register-form .register-btn
+/*end of register page*/
+
+
+/*Creating Employee`s Profile*/
+.create-empform{
+    background-color:#FAFAFB;
+    margin-top:0px;
+}
+.create-empform .title{
+    border-bottom:3px solid #F1AF2E;
+    width:270px;
+    padding-top:20px 0px;
+}
+.create-form{
+    margin-left:80px;
+}
+.create-form input[type="text"]{
+    width:400px;
+    height:40px;
+    margin-right:20px;
+}
+.create-form .first-name{
+    float:left;
+}
+.create-form .first-name input{
+   
+}
+.create-form .birthdate-label{
+    display:block;
+}
+.create-form .date-drop select{
+    width:80px;
+    height:40px;
+}
+.create-form .military-drop select{
+    width:400px;
+    height:40px;
+}
+.create-form .gender-radio{
+    font-size:15px;
+}
+.create-form .gender-radio .gender-label{
+    display:block;
+}
+.create-form .marital-label{
+    display:block; 
+}
+.save-btn{
+    background-color:#FFA30A;
+    color:#fff;
+}
+.save-btn :hover{
+    background-color:rgba(0, 0, 0, 0.2);
+        }
+
+.userphoto{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.userphoto .changephoto-btn{
+    background-color:#0046B2;
+    color:#fff;
+    font-size:15px;
+    height:40px;
+}
+.userphoto .changephoto-btn:hover{
+    background-color: rgb(3, 62, 151);
+    
+}
+
+.userphoto .userphoto-img{
+    float:left;
+    margin-top:5px;
+    margin-bottom:15px;
+    margin-right:40px;
+    height:70px;
+    width:70px;
+    text-align:center;
+}
+.userphoto .userphoto-img .profile-img{
+    display:block;
+    height:100px;
+    width:100px;
+    border-radius:50%;
+}
+.userphoto .userphoto-content{
+    margin-top:5px;
+}
+.validation-error{
+    color:red;
+}
+
+.company-createform{
+    margin:20px 40px;
+}
+/*end of Creating Employee`s Profile*/
+
+
+/*update profile*/
+.update-page{
+    background-color:#FAFAFB;
+    padding:10px 0;
+}
+.update-page .title{
+    border-bottom:3px solid #F1AF2E;
+    margin:10px auto;
+    width:270px;
+}
+.update-page .title .icon{
+    padding-right:8px;
+}
+.update-page .update-form{
+    margin:30px auto;
+    border:1px solid #ccc;
+    border-radius:5px;
+    background-color:#fff;
+}
+/*end of update profile*/
+/*AllJob View */
+.search-job{
+   /* background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.4)),url(~/Images/search.jpg) no-repeat ;*/
+    background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.4)),url('/Images/searchPic2.jpg') no-repeat;
+    background-size:cover;
+    height:209px;
+}
+.search-job .searchjob-form{
+    max-width:900px;
+    margin:0 auto;
+    padding-top:70px;
+    height:60px;
+}
+.search-job .searchjob-form input{
+    width:700px;
+    border:none;
+    height:60px;
+}
+.search-job .searchjob-form input:focus{
+    border:1px solid #3d0ad4;
+}
+.job-page{
+    background-color:#EDEDED;
+    padding-top:40px;
+    padding-bottom:10px;
+    height:100%;
+}
+
+.job-page .job-list{
+    list-style:none;
+    background-color:#fff;
+    border:1px solid #bdb5b5;
+    width:800px;
+    margin:0 auto;  
+    padding:0;
+}
+.job-page .job-list li{
+     border-bottom:1px solid #bdb5b5;
+     padding:20px 0;
+     padding-left:15px;
+     padding-right:15px;
+     max-height:160px;
+     overflow:hidden;
+}
+.job-page .job-list li:last-child{
+    border-bottom:none;
+}
+.job-page .job-list .result-wrap{
+    height:120px;
+}
+.job-page .job-list li .company-logo .img-container{
+    margin-left:50px;
+}
+.job-page .job-list li .company-logo .apply-btn{
+   margin-left:40px;
+   margin-top:10px;
+   display:none;
+}
+.job-page .job-list li:hover{
+    background-color:#e2e2e2;
+}
+.job-page .job-list li:hover .company-logo .apply-btn{
+    display:inline-block;
+}
+
+.paging{
+   margin:0 auto;
+   width:200px;
+   height:40px;
+}
+ .ul.pagination    
+{    
+        display: inline-block;    
+        padding: 0;    
+        margin: 0;    
+}    
+ul.pagination li{
+    display:inline;
+}
+ul.pagination li a{
+    color:black;
+    float:left;
+    padding:8px 16px;
+    text-decoration:none;
+    transition:background-color .3s;
+}
+ul.pagination li.active a{
+    background-color:#3794CE;
+    color:white;
+}
+ul.pagination li a:hover:not(.active){
+    background-color:#ddd;
+}
+/*end of AllJob View */
+
+/*publish job*/
+.publish-job .publish-form .form{
+    padding-left:30px;
+    padding-top:5px;
+}
+.publish-job .publish-form .title{
+    border-bottom:3px solid #F1AF2E;
+    margin:10px auto;
+    width:310px;
+}
+.publish-job .publish-form .save-btn{
+    width:300px;
+    height:40px;
+    margin-top:5px;
+    margin-left:20px;
+}
+/*end of publish job*/
+
+/*all requests*/
+.allRequests{
+    margin-top:0;
+    background-color:#EDEDED;
+    min-height:500px;
+    height:100%;
+}
+.requests-count{
+    height:70px;
+    background:#fff;
+    padding:20px;
+    font-size:20px;
+    border:1px solid #ccc;
+}
+/*end of all requests*/
+
+
+
+
+/*Footer*/
+footer{
+    bottom:0;
+    height:240px;
+    background-color: #403f46;
+    border-top: 2px solid #d4d4d4;
+    color: #E6E6E6;
+    padding-top:10px;
+    text-align: center;
+    overflow:hidden;
+    width:100%;
+}
+
+#div_top_hypers {
+    background-color:#eeeeee;
+    display:inline;      
+}
+#ul_top_hypers li{
+    display: inline;
+    padding:5px;
+    text-decoration:none;
+}
+
+#ul_top_hypers li a:hover{
+    color:#BC9D26;
+    text-decoration:underline;
+  
+}
+.divComp:hover{
+    color:#BC9D26;
+}
+.footer .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.footer .container .row .fa:hover {
+    opacity: 0.9;
+    box-shadow: 2px 3px 15px #BC9D26;
+    transform: translateY(-1px);
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+/*end of Footer*/

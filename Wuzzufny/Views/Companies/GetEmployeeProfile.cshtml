@@ -1,0 +1,108 @@
+﻿@model Wuzzufny.Models.Employee
+@{
+    ViewBag.Title = "GetProfile";
+}
+
+<h2>GetProfile</h2>
+   
+    <div class="container">
+            <div class="userphoto">
+                <div class="userphoto-img">
+                        <img class="profile-img" src="@Url.Content("~/images/Employees/"+Model.ProfileImage)" alt=""  />
+                </div>
+            </div>
+        <div class="first-name">
+            <p>@Model.FirstName</p>
+        </div>
+        <div class="last-name">
+            <p>@Model.LastName</p>
+        </div>
+        <div class="">
+            <p>@Model.birthDate</p>
+        </div>
+        <div class="">
+            <p>@Model.Gender</p>
+        </div>
+        <div class="">
+            <p>@Model.MaritalStatus</p>
+        </div>
+        <div class="">
+            <p>@Model.MilitaryStatus</p>
+        </div>
+        
+
+        <button data-request-id="@ViewBag.jobRequestID" class="btn btn-danger js-reject-btn">Reject</button>
+        <button data-request-id="@ViewBag.jobRequestID" class="btn btn-success js-accept-btn">Accept</button>
+    </div>
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.js-reject-btn').click(function (e) {
+                debugger;
+                bootbox.confirm({
+                    message: "Are you sure you want to reject this job request?",
+                    buttons: {
+                        cancel: {
+                            label: 'No',
+                            className:'btn-primary'
+                         },
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                            }
+                        },
+                        callback: function (result) {
+                            $.ajax({
+                                url: "/api/companies/RejectRequest?requestID=" + $(e.target).attr("data-request-id"),
+                                method: "PUT"
+                            })
+                            .done(function () {
+                                bootbox.alert("you reject request successfully");
+                            })
+                            .fail(function () {
+                                bootbox.alert("something wrong!");
+                            });
+                        }
+
+                });
+            });
+
+
+
+            $('.js-accept-btn').click(function (e) {
+                debugger;
+                bootbox.confirm({
+                    message: "Are you sure you want to accept this request?",
+                    buttons: {
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        },
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        }
+                    },
+                    callback: function (result) {
+                        $.ajax({
+                            url: "/api/companies/AcceptRequest?requestID=" + $(e.target).attr("data-request-id"),
+                            method: "PUT"
+                        })
+                        .done(function () {
+                            bootbox.alert("you accept request successfully");
+                        })
+                        .fail(function () {
+                            bootbox.alert("something wrong!");
+                        });
+                    }
+
+                });
+            });
+
+        });
+    </script>
+    }

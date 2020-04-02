@@ -1,0 +1,110 @@
+﻿<ul class="dropdown-menu dropdown-menu-right profile-menu">
+    <li class="dropdown-item">
+        <div class="profile-section">
+            <a href="/Employees/Update/@ViewBag.empProfile.Id" class="img-link">
+                <img src="@Url.Content("~/images/Employees/"+ViewBag.empProfile.ProfileImage)" class="rounded-circle profile-img" />
+            </a>
+            <a href="/Employees/Update/@ViewBag.empProfile.Id">
+                <ul class="list-unstyled info-list">
+                    <li class="info-item-heading">Hi<span style="font-size:5px; color:#3681f8;">,</span> @ViewBag.empProfile.FirstName</li>
+                    <li class="info-item-mail text-muted">@ViewBag.empProfile.User.Email</li>
+                    <li class="info-item-label">view profile</li>
+                </ul>
+            </a>
+        </div>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+
+        <a href="/Employees/Update/@ViewBag.empProfile.Id">
+            <span class="fa fa-pen font-icon"></span>
+            <span class="link-text">Edit Profile</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-users font-icon"></span>
+            <span class="link-text">Update Career Interestis</span>
+        </a>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-users font-icon"></span>
+            <span class="link-text">Career Coaching</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="/Employees/GetRequestsStatus">
+            <span class="fa fa-book font-icon"></span>
+            <span class="link-text">Applications</span>
+        </a>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-phone font-icon"></span>
+            <span class="link-text">Help Center</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-exclamation-circle font-icon"></span>
+            <span class="link-text">About Us</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-handshake font-icon"></span>
+            <span class="link-text">Become a Partener</span>
+        </a>
+    </li>
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-envelope font-icon"></span>
+            <span class="link-text">Contact Us</span>
+        </a>
+    </li>
+
+    <li role="separator" class="dropdown-divider"></li>
+
+    <li class="dropdown-item">
+        <a href="#">
+            <span class="fa fa-cogs font-icon"></span>
+            <span class="link-text">Acount Settings</span>
+        </a>
+    </li>
+
+    <li class="dropdown-item">
+        <a href="javascript:document.getElementById('logoutForm').submit()">
+            <span class="fa fa-sign-out-alt font-icon"></span>
+            <span class="link-text">Log Off</span>
+        </a>
+    </li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--*****************************************-->
+
